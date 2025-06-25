@@ -1,0 +1,22 @@
+{
+  "name": "appium-wdio-ts",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "wdio run wdio.conf.ts"
+  },
+  "dependencies": {
+    "@wdio/appium-service": "^8.37.0",
+    "@wdio/cli": "^8.37.0",
+    "@wdio/local-runner": "^8.37.0",
+    "@wdio/mocha-framework": "^8.37.0",
+    "@wdio/spec-reporter": "^8.37.0",
+    "expect-webdriverio": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.0",
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.0.0"
+  }
+}
