@@ -2,24 +2,30 @@ import ListingPage from '../pageobjects/listing.page.js';
 import { loginUser } from '../utils/flows.js';
 import { testUser } from '../constants/userData.js';
 import { backpack, onesie, bikeLight } from '../constants/productsData.js';
+import { logStep } from '../logger/customLog.js';
 
 describe('Sort products by price', () => {
     it('sort products by price ascending', async () => {
 
+        logStep('Logging in as standard user');
         loginUser(
             testUser.username,
             testUser.password
-        )
+        );
 
-        await ListingPage.assertProductNameDisplayed(backpack.name)
-        await ListingPage.assertProductPriceDisplayed(backpack.price)
+        logStep(`Asserting product name and price on listing`);
+        await ListingPage.assertProductNameDisplayed(backpack.name);
+        await ListingPage.assertProductPriceDisplayed(backpack.price);
+
+        logStep('Opening sort menu');
         await ListingPage.openSortMenu();
 
+        logStep('Selecting sort option "Price (low to high)"');
         await ListingPage.selectSortingOption('Price (low to high)');
 
-        await ListingPage.assertProductNameDisplayed(onesie.name)
-        await ListingPage.assertProductPriceDisplayed(onesie.price)
-        await ListingPage.assertProductNameDisplayed(bikeLight.name)
-        await ListingPage.assertProductPriceDisplayed(bikeLight.price)
+        await ListingPage.assertProductNameDisplayed(onesie.name);
+        await ListingPage.assertProductPriceDisplayed(onesie.price);
+        await ListingPage.assertProductNameDisplayed(bikeLight.name);
+        await ListingPage.assertProductPriceDisplayed(bikeLight.price);
     });
 });
