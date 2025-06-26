@@ -2,6 +2,9 @@ class ListingPage {
 
     get cart() { return $('~test-Cart'); }
     get removeButton() { return $('~test-REMOVE'); }
+    get sortButton() { return $('~test-Modal Selector Button'); }
+
+    option(optionText: string) { return $(`//android.widget.TextView[@text="${optionText}"]`); }
 
     addToCart(index: number) { return $(`(//android.view.ViewGroup[@content-desc="test-ADD TO CART"])[${index}]`); }
     productItemTitle(productName: string) {
@@ -29,6 +32,14 @@ class ListingPage {
 
     async assertRemoveButtonDisplayed() {
         await expect(this.removeButton).toBeDisplayed();
+    }
+
+    async openSortMenu() {
+        await this.sortButton.click();
+    }
+
+    async selectSortingOption(optionText: string) {
+        await this.option(optionText).click();
     }
 }
 
