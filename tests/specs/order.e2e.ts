@@ -5,6 +5,7 @@ import ListingPage from '../pageobjects/listing.page.js';
 import CartPage from '../pageobjects/cart.page.js';
 import CheckoutPage from '../pageobjects/checkout.page.js';
 import OverviewPage from '../pageobjects/overview.page.js';
+import ThankYouPage from '../pageobjects/thankyou.page.js';
 
 describe('Product order flow', () => {
     it('order one product for logged user', async () => {
@@ -39,5 +40,10 @@ describe('Product order flow', () => {
         await OverviewPage.assertSummaryDetailsSectionsDisplayed();
         await OverviewPage.assertPriceSectionDisplayed(backpack.price);
         await OverviewPage.clickFinishOrder();
+        
+        await ThankYouPage.assertThankYouPageDisplayed();
+        await ThankYouPage.clickBackToHomeButton()
+
+        await ListingPage.assertProductNameDisplayed(backpack.name);
     });
 });
