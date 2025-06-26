@@ -4,6 +4,7 @@ import LoginPage from '../pageobjects/login.page.js';
 import ListingPage from '../pageobjects/listing.page.js';
 import CartPage from '../pageobjects/cart.page.js';
 import CheckoutPage from '../pageobjects/checkout.page.js';
+import OverviewPage from '../pageobjects/overview.page.js';
 
 describe('Product order flow', () => {
     it('order one product for logged user', async () => {
@@ -34,5 +35,9 @@ describe('Product order flow', () => {
         );
         await CheckoutPage.clickContinueButton();
 
+        await OverviewPage.assertProductItemDisplayed()
+        await OverviewPage.assertSummaryDetailsSectionsDisplayed();
+        await OverviewPage.assertPriceSectionDisplayed(backpack.price);
+        await OverviewPage.clickFinishOrder();
     });
 });
