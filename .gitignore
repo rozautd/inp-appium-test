@@ -1,2 +1,5 @@
+# MacOS folder properties
 .DS_Store
+
+# Node files
 node_modules
