@@ -1,6 +1,6 @@
 import { testUser, deliveryAddress } from '../constants/userData.js';
 import { backpack } from '../constants/productsData.js';
-import LoginPage from '../pageobjects/login.page.js';
+import { loginUser } from '../utils/flows.js';
 import ListingPage from '../pageobjects/listing.page.js';
 import CartPage from '../pageobjects/cart.page.js';
 import CheckoutPage from '../pageobjects/checkout.page.js';
@@ -10,12 +10,10 @@ import ThankYouPage from '../pageobjects/thankyou.page.js';
 describe('Product order flow', () => {
     it('order one product for logged user', async () => {
 
-        await LoginPage.waitForLoginScreen()
-        await LoginPage.typeCredentials(
+        loginUser(
             testUser.username,
             testUser.password
-        );
-        await LoginPage.clickLoginButton();
+        )
 
         await ListingPage.assertProductNameDisplayed(backpack.name);
         await ListingPage.assertProductPriceDisplayed(backpack.price);
@@ -40,7 +38,7 @@ describe('Product order flow', () => {
         await OverviewPage.assertSummaryDetailsSectionsDisplayed();
         await OverviewPage.assertPriceSectionDisplayed(backpack.price);
         await OverviewPage.clickFinishOrder();
-        
+
         await ThankYouPage.assertThankYouPageDisplayed();
         await ThankYouPage.clickBackToHomeButton()
 
