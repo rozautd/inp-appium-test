@@ -2,6 +2,7 @@ import { testUser } from '../constants/userData.js';
 import { backpack } from '../constants/productsData.js';
 import LoginPage from '../pageobjects/login.page.js';
 import ListingPage from '../pageobjects/listing.page.js';
+import CartPage from '../pageobjects/cart.page.js';
 
 describe('Product order flow', () => {
     it('order one product for logged user', async () => {
@@ -19,5 +20,10 @@ describe('Product order flow', () => {
         await ListingPage.assertRemoveButtonDisplayed()
         await ListingPage.clickCart();
 
+        await CartPage.clickCheckoutButton();
+        await CartPage.assertProductNameAndPriceDisplayed(
+            backpack.name,
+            backpack.price
+        )
     });
 });
