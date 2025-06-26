@@ -1,8 +1,9 @@
-import { testUser } from '../constants/userData.js';
+import { testUser, deliveryAddress } from '../constants/userData.js';
 import { backpack } from '../constants/productsData.js';
 import LoginPage from '../pageobjects/login.page.js';
 import ListingPage from '../pageobjects/listing.page.js';
 import CartPage from '../pageobjects/cart.page.js';
+import CheckoutPage from '../pageobjects/checkout.page.js';
 
 describe('Product order flow', () => {
     it('order one product for logged user', async () => {
@@ -25,5 +26,13 @@ describe('Product order flow', () => {
             backpack.name,
             backpack.price
         )
+
+        await CheckoutPage.fillUserData(
+            deliveryAddress.name,
+            deliveryAddress.lastName,
+            deliveryAddress.postCode
+        );
+        await CheckoutPage.clickContinueButton();
+
     });
 });
