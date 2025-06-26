@@ -1,6 +1,6 @@
 export const config: WebdriverIO.Config = {
     runner: 'local',
-    specs: [],
+    specs: ['./tests/**/*.e2e.ts'],
     maxInstances: 1,
     capabilities: [{
         platformName: 'Android',
