@@ -7,27 +7,31 @@ class OverviewPage {
   get btnFinish() { return $('~test-FINISH'); }
   get productItem() { return $('~test-Item'); }
 
-  async clickFinishOrder() {
+  async clickFinishOrder(): Promise<this> {
     await this.btnFinish.click();
+    return this;
   }
 
-  async assertSummaryDetailsSectionsDisplayed() {
+  async assertSummaryDetailsSectionsDisplayed(): Promise<this> {
     assertTextDisplayed("Payment Information:");
     assertTextDisplayed("Shipping Information:");
     await scrollToElementByAccessibilityId('test-FINISH');
+    return this;
   }
 
-  async assertProductItemDisplayed() {
+  async assertProductItemDisplayed(): Promise<this> {
     await expect(this.productItem).toBeDisplayed();
+    return this;
   }
 
-  async assertPriceSectionDisplayed(price: string) {
+  async assertPriceSectionDisplayed(price: string): Promise<this> {
     const tax = "2.40";
     const total = parseFloat(backpack.price) + parseFloat(tax);
 
     assertTextDisplayed(`Item total: $${price}`);
     assertTextDisplayed(`Tax: $${tax}`);
     assertTextDisplayed(`Total: $${total}`);
+    return this;
   }
 }
 

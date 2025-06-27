@@ -6,17 +6,20 @@ class LoginPage {
     get password() { return $('~test-Password'); }
     get loginButton() { return $('~test-LOGIN'); }
 
-    async typeCredentials(user: string, password: string) {
+    async typeCredentials(user: string, password: string): Promise<this> {
         await this.username.setValue(user);
         await this.password.setValue(password); 
+        return this;
     }
 
-    async clickLoginButton() {
+    async clickLoginButton(): Promise<this> {
         await this.loginButton.click();
+        return this;
     }
 
-    async waitForLoginScreen() {
+    async waitForLoginScreen(): Promise<this> {
         await waitForElementToBeDisplayed(this.loginButton);
+        return this;
     }
 }
 
