@@ -14,32 +14,39 @@ class ListingPage {
         return $(`//android.widget.TextView[@content-desc="test-Price" and @text="$${price}"]`);
     }
 
-    async clickAddToCartButtonOnPosition(position: number) {
+    async clickAddToCartButtonOnPosition(position: number): Promise<this> {
         await this.addToCart(position).click();
+        return this;
     }
 
-    async clickCart() {
+    async clickCart(): Promise<this> {
         await this.cart.click();
+        return this;
     }
 
-    async assertProductNameDisplayed(productName: string) {
+    async assertProductNameDisplayed(productName: string): Promise<this> {
         await expect(this.productItemTitle(productName)).toBeDisplayed();
+        return this;
     }
 
-    async assertProductPriceDisplayed(price: string) {
+    async assertProductPriceDisplayed(price: string): Promise<this> {
         await expect(this.productPrice(price)).toBeDisplayed();
+        return this;
     }
 
-    async assertRemoveButtonDisplayed() {
+    async assertRemoveButtonDisplayed(): Promise<this> {
         await expect(this.removeButton).toBeDisplayed();
+        return this;
     }
 
-    async openSortMenu() {
+    async openSortMenu(): Promise<this> {
         await this.sortButton.click();
+        return this;
     }
 
-    async selectSortingOption(optionText: string) {
+    async selectSortingOption(optionText: string): Promise<this> {
         await this.option(optionText).click();
+        return this;
     }
 }
 

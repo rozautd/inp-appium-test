@@ -4,13 +4,15 @@ class ThankYouPage {
 
   get backHomeButton() { return $('~test-BACK HOME'); }
 
-  async assertThankYouPageDisplayed() {
+  async assertThankYouPageDisplayed(): Promise<this> {
     assertTextDisplayed("THANK YOU FOR YOU ORDER")
     assertTextDisplayed("Your order has been dispatched, and will arrive just as fast as the pony can get there!")
+    return this;
   }
 
-  async clickBackToHomeButton() {
+  async clickBackToHomeButton(): Promise<this> {
     await this.backHomeButton.click();
+    return this;
   }
 }
 

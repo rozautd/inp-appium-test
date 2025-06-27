@@ -8,7 +8,7 @@ describe('Sort products by price', () => {
     it('sort products by price ascending', async () => {
 
         logStep('Logging in as standard user');
-        loginUser(
+        await loginUser(
             testUser.username,
             testUser.password
         );
