@@ -79,3 +79,27 @@ inp-appium-test/
 ```
 
 ---
+
+## 📊 Allure Report
+
+This project supports generating interactive test reports using [Allure Report](https://docs.qameta.io/allure/).
+
+#### 🚀 Generate and view the report
+
+1. Run the tests:
+
+```bash
+npm run test
+```
+
+2. Generate the report:
+
+```bash
+npm run allure:generate
+```
+
+3. Open the report in your browser:
+
+```bash
+npm run allure:open
+```

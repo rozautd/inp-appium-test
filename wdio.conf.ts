@@ -14,12 +14,24 @@ export const config: WebdriverIO.Config = {
     }],
     logLevel: 'info',
     framework: 'mocha',
-    reporters: ['spec'],
+    reporters: [
+        'spec',
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: false,
+            disableWebdriverScreenshotsReporting: false,
+        }]
+    ],
     services: ['appium'],
     waitforTimeout: 20000,
     connectionRetryTimeout: 120000,
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
-    }
+    },
+    afterTest: async function (test, context, { error }) {
+        if (error) {
+            await browser.takeScreenshot();
+        }
+    },
 };
